@@ -7,6 +7,8 @@
 #include <mutex>
 #include <functional>
 #include <thread>
+#include "printer.h"
+
 
 namespace Smoren::ThreadContainers {
     template<typename ClusterItem> class Cluster {
@@ -95,7 +97,6 @@ namespace Smoren::ThreadContainers {
         return stream << cluster.getStorage();
     }
 
-
     template<typename ClusterItem> class ClusterGroup {
     public:
         const static bool PHASE_BUFFERING = false;
@@ -176,7 +177,7 @@ namespace Smoren::ThreadContainers {
             std::vector<std::thread> threads;
 
             for(auto* cluster : getClusters()) {
-                threads.push_back(std::thread(this->handler, ref(*this), ref(*cluster)));
+                threads.push_back(std::thread(this->handler, std::ref(*this), std::ref(*cluster)));
             }
 
             return threads;

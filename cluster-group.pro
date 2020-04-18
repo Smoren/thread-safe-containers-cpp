@@ -5,10 +5,7 @@ CONFIG -= qt
 QMAKE_LFLAGS += -pthread
 
 SOURCES += \
-        main.cpp \
-    cell.cpp
+        main.cpp
 
-HEADERS += \
-    printer.h \
-    cell.h \
-    clustergroup.h
+include(src/src.pri)
+include(examples/examples.pri)
