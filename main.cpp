@@ -19,7 +19,6 @@ int main()
 
         while(!cg.isTerminated()) {
             cg.log(id, "lock storage 1");
-            this_thread::yield();
             for(unsigned long i=0; i<1000000; i++) {
                 cg.add(new Cell());
             }
@@ -33,7 +32,6 @@ int main()
 
             cg.finishPhaseApplying();
 
-            this_thread::yield();
             cg.log(id, "lock storage 2");
             unsigned long i=0;
             for(auto* cell : cluster.getStorage()) {
