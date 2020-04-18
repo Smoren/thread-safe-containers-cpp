@@ -250,8 +250,8 @@ namespace Smoren::ThreadContainers {
         return stream << *cluster;
     }
 
-    template<typename Cluster, typename ClusterItem>
-    std::ostream& operator <<(std::ostream& stream, const ClusterGroup<Cluster>& group) {
+    template<typename ClusterItem>
+    std::ostream& operator <<(std::ostream& stream, const ClusterGroup<ClusterItem>& group) {
         return stream << group.getClusters();
     }
 }

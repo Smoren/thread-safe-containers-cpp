@@ -66,6 +66,7 @@ int main()
         thread.join();
     }
 
+    //cout << cg << endl;
     cout << cg.getItemsCount() << endl;
     end = std::chrono::system_clock::now();
     std::cout << "time spent: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
