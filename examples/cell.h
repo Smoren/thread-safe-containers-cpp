@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ostream>
-#include "src/clustergroup.h"
+#include "../src/clustergroup.h"
 
 namespace Smoren::ThreadContainers::Examples {
     class Cell {

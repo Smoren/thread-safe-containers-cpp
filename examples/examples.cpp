@@ -3,10 +3,10 @@
 #include <thread>
 #include <sstream>
 #include <unistd.h>
-#include "src/clustergroup.h"
-#include "src/clustermap.h"
-#include "examples/examples.h"
-#include "examples/cell.h"
+#include "../src/clustergroup.h"
+#include "../src/clustermap.h"
+#include "./examples.h"
+#include "./cell.h"
 
 
 namespace Smoren::ThreadContainers::Examples {

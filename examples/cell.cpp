@@ -1,5 +1,5 @@
 #include <ostream>
-#include "examples/cell.h"
+#include "./cell.h"
 
 namespace Smoren::ThreadContainers::Examples {
     Cell::Cell() : clusterId(0), id(0) {

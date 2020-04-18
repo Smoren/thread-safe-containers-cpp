@@ -3,7 +3,7 @@
 #include <vector>
 #include <thread>
 #include <unistd.h>
-#include "examples/examples.h"
+#include "./examples/examples.h"
 
 using namespace std;
 using namespace Smoren::ThreadContainers;

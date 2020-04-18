@@ -1,7 +1,7 @@
 #pragma once
 
-#include "src/clustermap.h"
-#include "examples/cell.h"
+#include "../src/clustermap.h"
+#include "./cell.h"
 
 
 namespace Smoren::ThreadContainers::Examples {
