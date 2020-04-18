@@ -10,32 +10,30 @@
 #include <deque>
 
 
-using namespace std;
-
 namespace Smoren::ThreadContainers {
     template <typename Collection>
-    string join(const Collection& collection, const string& delimiter);
+    std::string join(const Collection& collection, const std::string& delimiter);
 
     template <typename First, typename Second>
-    ostream& operator <<(ostream& stream, const pair<First, Second>& p);
+    std::ostream& operator <<(std::ostream& stream, const std::pair<First, Second>& p);
 
     template <typename Key, typename Value>
-    ostream& operator <<(ostream& stream, const map<Key, Value>& m);
+    std::ostream& operator <<(std::ostream& stream, const std::map<Key, Value>& m);
 
     template <typename Value>
-    ostream& operator <<(ostream& stream, const vector<Value>& m);
+    std::ostream& operator <<(std::ostream& stream, const std::vector<Value>& m);
 
     template <typename Value>
-    ostream& operator <<(ostream& stream, const deque<Value>& m);
+    std::ostream& operator <<(std::ostream& stream, const std::deque<Value>& m);
 
     template <typename Value>
-    ostream& operator <<(ostream& stream, const set<Value>& m);
+    std::ostream& operator <<(std::ostream& stream, const std::set<Value>& m);
 
 
     template <typename Collection>
-    string join(const Collection& collection, const string& delimiter) {
+    std::string join(const Collection& collection, const std::string& delimiter) {
         bool isFirst = true;
-        stringstream ss;
+        std::stringstream ss;
         for(auto& item : collection) {
             if(!isFirst) {
                 ss << delimiter;
@@ -48,28 +46,28 @@ namespace Smoren::ThreadContainers {
     }
 
     template <typename First, typename Second>
-    ostream& operator <<(ostream& stream, const pair<First, Second>& p) {
+    std::ostream& operator <<(std::ostream& stream, const std::pair<First, Second>& p) {
         // требует подключения utility
         return stream << p.first << ": " << p.second;
     }
 
     template <typename Key, typename Value>
-    ostream& operator <<(ostream& stream, const map<Key, Value>& m) {
+    std::ostream& operator <<(std::ostream& stream, const std::map<Key, Value>& m) {
         return stream << "{" << join(m, ", ") << "}";
     }
 
     template <typename Value>
-    ostream& operator <<(ostream& stream, const vector<Value>& m) {
+    std::ostream& operator <<(std::ostream& stream, const std::vector<Value>& m) {
         return stream << "[" << join(m, ", ") << "]";
     }
 
     template <typename Value>
-    ostream& operator <<(ostream& stream, const set<Value>& m) {
+    std::ostream& operator <<(std::ostream& stream, const std::set<Value>& m) {
         return stream << "(" << join(m, ", ") << ")";
     }
 
     template <typename Value>
-    ostream& operator <<(ostream& stream, const deque<Value>& m) {
+    std::ostream& operator <<(std::ostream& stream, const std::deque<Value>& m) {
         return stream << "[" << join(m, ", ") << "]";
     }
 }

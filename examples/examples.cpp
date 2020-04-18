@@ -71,7 +71,7 @@ namespace Smoren::ThreadContainers::Examples {
         end = std::chrono::system_clock::now();
         std::cout << "time spent: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
         showTitle("END: testClusterGroup");
-        std::cout << endl;
+        std::cout << std::endl;
     }
 
     void testClusterMap() {
@@ -82,10 +82,10 @@ namespace Smoren::ThreadContainers::Examples {
         ClusterMap<Cell*> m(10, 10000);
 
         for(int i=0; i<10; i++) {
-            vector<thread> threads;
+            std::vector<std::thread> threads;
 
             for(int i=0; i<10; i++) {
-                threads.push_back(thread(threadClusterMap, ref(m), i, i*10000, i*10000+10000));
+                threads.push_back(std::thread(threadClusterMap, std::ref(m), i, i*10000, i*10000+10000));
                 //threads.push_back(thread(threadClusterMap, ref(m), i, 10000, 20000));
             }
 
@@ -93,14 +93,14 @@ namespace Smoren::ThreadContainers::Examples {
                 th.join();
             }
 
-            cout << "step " << i << endl;
+            std::cout << "step " << i << std::endl;
         }
 
-        //cout << m << endl;
+        //std::cout << m << std::endl;
         end = std::chrono::system_clock::now();
         std::cout << "time spent: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
         showTitle("END: testClusterMap");
-        std::cout << endl;
+        std::cout << std::endl;
     }
 
     void testClusterMapBenchWithStdMap() {
@@ -146,7 +146,7 @@ namespace Smoren::ThreadContainers::Examples {
             std::cout << "cluster map iterating: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
         }
         showTitle("END: testClusterMapBenchWithStdMap");
-        std::cout << endl;
+        std::cout << std::endl;
     }
 
     void showTitle(std::string message) {
@@ -157,7 +157,7 @@ namespace Smoren::ThreadContainers::Examples {
         for(unsigned long i=0; i<message.size(); i++) {
             std::cout << "=";
         }
-        std::cout << endl;
+        std::cout << std::endl;
     }
 
     void threadClusterMap(ClusterMap<Cell*>& m, unsigned long id, unsigned long from, unsigned long until) {
