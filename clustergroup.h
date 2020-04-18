@@ -96,9 +96,8 @@ namespace Smoren::ThreadContainers {
     }
 
 
-    template<typename Cluster> class ClusterGroup {
+    template<typename ClusterItem> class ClusterGroup {
     public:
-        //class ClusterItem;
         const static bool PHASE_BUFFERING = false;
         const static bool PHASE_APPLYING = true;
 
@@ -106,7 +105,7 @@ namespace Smoren::ThreadContainers {
             unsigned long size
         ) : size(size), currentClusterIndex(0), phase(ClusterGroup::PHASE_BUFFERING), phaseFinishCounter(0), terminated(false) {
             for(unsigned long i=0; i<size; i++) {
-                clusters.push_back(new Cluster(i+1));
+                clusters.push_back(new Cluster<ClusterItem>(i+1));
             }
         }
 
@@ -116,12 +115,11 @@ namespace Smoren::ThreadContainers {
             }
         }
 
-        template<class ClusterItem>
+
         void add(ClusterItem* item) {
             clusters.at(nextClusterIndex())->add(item);
         }
 
-        template<class ClusterItem>
         void remove(ClusterItem* item) {
             unsigned long clusterId = item->getClusterId();
             checkClusterId(clusterId);
@@ -148,15 +146,15 @@ namespace Smoren::ThreadContainers {
             }
         }
 
-        const std::vector<Cluster*>& getClusters() const {
+        const std::vector<Cluster<ClusterItem>*>& getClusters() const {
             return clusters;
         }
 
-        std::vector<Cluster*>& getClusters() {
+        std::vector<Cluster<ClusterItem>*>& getClusters() {
             return clusters;
         }
 
-        Cluster& getCluster(unsigned long clusterId) {
+        Cluster<ClusterItem>& getCluster(unsigned long clusterId) {
             checkClusterId(clusterId);
             return *clusters.at(clusterId-1);
         }
@@ -170,7 +168,7 @@ namespace Smoren::ThreadContainers {
             return result;
         }
 
-        void setHandler(std::function<void(ClusterGroup<Cluster>&, Cluster&)> handler) {
+        void setHandler(std::function<void(ClusterGroup<ClusterItem>&, Cluster<ClusterItem>&)> handler) {
             this->handler = handler;
         }
 
@@ -203,11 +201,11 @@ namespace Smoren::ThreadContainers {
         bool phase;
         unsigned long phaseFinishCounter;
         bool terminated;
-        std::function<void(ClusterGroup<Cluster>&, Cluster&)> handler;
+        std::function<void(ClusterGroup<ClusterItem>&, Cluster<ClusterItem>&)> handler;
         std::mutex clusterIndexMutex;
         std::mutex phaseMutex;
         std::mutex logMutex;
-        std::vector<Cluster*> clusters;
+        std::vector<Cluster<ClusterItem>*> clusters;
 
         unsigned long nextClusterIndex() {
             clusterIndexMutex.lock();
