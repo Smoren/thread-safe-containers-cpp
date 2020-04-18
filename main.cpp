@@ -12,9 +12,9 @@ using namespace Smoren::ThreadContainers;
 
 int main()
 {
-    ClusterGroup<Cluster<Cell>, Cell> cg(4);
+    ClusterGroup< Cluster<Cell> > cg(4);
 
-    cg.setHandler([](ClusterGroup<Cluster<Cell>, Cell>& cg, Cluster<Cell>& cluster) {
+    cg.setHandler([](ClusterGroup< Cluster<Cell> >& cg, Cluster<Cell>& cluster) {
         unsigned long id = cluster.getId();
 
         while(!cg.isTerminated()) {

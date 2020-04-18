@@ -95,8 +95,10 @@ namespace Smoren::ThreadContainers {
         return stream << cluster.getStorage();
     }
 
-    template<typename Cluster, typename ClusterItem> class ClusterGroup {
+
+    template<typename Cluster> class ClusterGroup {
     public:
+        //class ClusterItem;
         const static bool PHASE_BUFFERING = false;
         const static bool PHASE_APPLYING = true;
 
@@ -114,10 +116,12 @@ namespace Smoren::ThreadContainers {
             }
         }
 
+        template<class ClusterItem>
         void add(ClusterItem* item) {
             clusters.at(nextClusterIndex())->add(item);
         }
 
+        template<class ClusterItem>
         void remove(ClusterItem* item) {
             unsigned long clusterId = item->getClusterId();
             checkClusterId(clusterId);
@@ -166,7 +170,7 @@ namespace Smoren::ThreadContainers {
             return result;
         }
 
-        void setHandler(std::function<void(ClusterGroup<Cluster, ClusterItem>&, Cluster&)> handler) {
+        void setHandler(std::function<void(ClusterGroup<Cluster>&, Cluster&)> handler) {
             this->handler = handler;
         }
 
@@ -199,7 +203,7 @@ namespace Smoren::ThreadContainers {
         bool phase;
         unsigned long phaseFinishCounter;
         bool terminated;
-        std::function<void(ClusterGroup<Cluster, ClusterItem>&, Cluster&)> handler;
+        std::function<void(ClusterGroup<Cluster>&, Cluster&)> handler;
         std::mutex clusterIndexMutex;
         std::mutex phaseMutex;
         std::mutex logMutex;
@@ -249,7 +253,7 @@ namespace Smoren::ThreadContainers {
     }
 
     template<typename Cluster, typename ClusterItem>
-    std::ostream& operator <<(std::ostream& stream, const ClusterGroup<Cluster, ClusterItem>& group) {
+    std::ostream& operator <<(std::ostream& stream, const ClusterGroup<Cluster>& group) {
         return stream << group.getClusters();
     }
 }
