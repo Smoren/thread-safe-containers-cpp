@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ostream>
-#include "cluster.h"
+#include "clustergroup.h"
 
 
 class Cell {

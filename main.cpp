@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include "printer.h"
 #include "cell.h"
-#include "cluster.h"
+#include "clustergroup.h"
 
 using namespace std;
 using namespace Smoren::ThreadContainers;

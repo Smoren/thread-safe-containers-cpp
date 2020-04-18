@@ -10,5 +10,5 @@ SOURCES += \
 
 HEADERS += \
     printer.h \
-    cluster.h \
-    cell.h
+    cell.h \
+    clustergroup.h
