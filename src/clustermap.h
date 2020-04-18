@@ -6,7 +6,7 @@
 #include "./printer.h"
 
 
-namespace Smoren::ThreadContainers {
+namespace Smoren::ThreadSafeContainers {
     template<typename ClusterMapItem> class ClusterMap {
     public:
         class iterator;

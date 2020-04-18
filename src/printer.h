@@ -10,7 +10,7 @@
 #include <deque>
 
 
-namespace Smoren::ThreadContainers {
+namespace Smoren::ThreadSafeContainers {
     template <typename Collection>
     std::string join(const Collection& collection, const std::string& delimiter);
 

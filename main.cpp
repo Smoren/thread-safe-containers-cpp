@@ -6,8 +6,8 @@
 #include "./examples/examples.h"
 
 using namespace std;
-using namespace Smoren::ThreadContainers;
-using namespace Smoren::ThreadContainers::Examples;
+using namespace Smoren::ThreadSafeContainers;
+using namespace Smoren::ThreadSafeContainers::Examples;
 
 int main()
 {

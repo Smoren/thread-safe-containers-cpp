@@ -4,7 +4,7 @@
 #include "./cell.h"
 
 
-namespace Smoren::ThreadContainers::Examples {
+namespace Smoren::ThreadSafeContainers::Examples {
     void testClusterGroup();
     void testClusterMap();
     void testClusterMapBenchWithStdMap();

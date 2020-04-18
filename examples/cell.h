@@ -3,7 +3,7 @@
 #include <ostream>
 #include "../src/clustergroup.h"
 
-namespace Smoren::ThreadContainers::Examples {
+namespace Smoren::ThreadSafeContainers::Examples {
     class Cell {
     public:
         Cell();

@@ -10,7 +10,7 @@
 #include "./printer.h"
 
 
-namespace Smoren::ThreadContainers {
+namespace Smoren::ThreadSafeContainers {
     template<typename ClusterItem> class Cluster {
     public:
         Cluster(unsigned long id) : clusterId(id) {
