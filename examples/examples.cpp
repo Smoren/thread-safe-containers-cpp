@@ -56,7 +56,7 @@ namespace Smoren::ThreadSafeContainers::Examples {
         std::chrono::time_point<std::chrono::system_clock> start, end;
         start = std::chrono::system_clock::now();
 
-        std::vector<std::thread> threads = cg.run();
+        std::vector<std::thread>& threads = cg.run();
 
         sleep(10);
         cg.terminate();

@@ -173,8 +173,8 @@ namespace Smoren::ThreadSafeContainers {
             this->handler = handler;
         }
 
-        std::vector<std::thread> run() {
-            std::vector<std::thread> threads;
+        std::vector<std::thread>& run() {
+            threads.clear();
 
             for(auto* cluster : getClusters()) {
                 threads.push_back(std::thread(this->handler, std::ref(*this), std::ref(*cluster)));
@@ -207,6 +207,7 @@ namespace Smoren::ThreadSafeContainers {
         std::mutex phaseMutex;
         std::mutex logMutex;
         std::vector<Cluster<ClusterItem>*> clusters;
+        std::vector<std::thread> threads;
 
         unsigned long nextClusterIndex() {
             clusterIndexMutex.lock();
