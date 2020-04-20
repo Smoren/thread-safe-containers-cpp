@@ -16,7 +16,8 @@ namespace Smoren::ThreadSafeContainers {
             typename std::map<unsigned long, ClusterMapItem>::iterator itSubContainer;
             std::vector< std::map<unsigned long, ClusterMapItem> >* container;
             std::map<unsigned long, ClusterMapItem>* subContainer;
-            public: iterator(
+        public:
+            explicit iterator(
                 std::vector< std::map<unsigned long, ClusterMapItem> >& _container,
                 std::map<unsigned long, ClusterMapItem>& _subContainer,
                 const typename std::vector< std::map<unsigned long, ClusterMapItem> >::iterator& _itContainer,
@@ -60,7 +61,7 @@ namespace Smoren::ThreadSafeContainers {
             }
         };
 
-        ClusterMap(unsigned long clustersCount, unsigned long clusterSize) : clustersCount(clustersCount), clusterSize(clusterSize) {
+        explicit ClusterMap(unsigned long clustersCount, unsigned long clusterSize) : clustersCount(clustersCount), clusterSize(clusterSize) {
             if(!clustersCount || !clusterSize) {
                 throw std::runtime_error("bad ClusterMap config");
             }

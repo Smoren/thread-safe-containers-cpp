@@ -13,7 +13,7 @@
 namespace Smoren::ThreadSafeContainers {
     template<typename ClusterItem> class Cluster {
     public:
-        Cluster(unsigned long id) : clusterId(id) {
+        explicit Cluster(unsigned long id) : clusterId(id) {
 
         }
 
@@ -102,7 +102,7 @@ namespace Smoren::ThreadSafeContainers {
         const static bool PHASE_BUFFERING = false;
         const static bool PHASE_APPLYING = true;
 
-        ClusterGroup(
+        explicit ClusterGroup(
             unsigned long size
         ) : size(size), currentClusterIndex(0), phase(ClusterGroup::PHASE_BUFFERING), phaseFinishCounter(0), terminated(false) {
             for(unsigned long i=0; i<size; i++) {
