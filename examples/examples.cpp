@@ -14,7 +14,13 @@ namespace Smoren::ThreadSafeContainers::Examples {
         showTitle("BEGIN: testClusterGroup");
         ClusterGroup<Cell> cg(4);
 
-        cg.setHandler([](ClusterGroup<Cell>& cg, Cluster<Cell>& cluster) {
+        cg.setOnFinishPhaseHandler([](ClusterGroup<Cell>& cg, bool phase) {
+            std::stringstream ss;
+            ss << "phase " << static_cast<int>(phase) << " finished";
+            cg.log(ss.str());
+        });
+
+        cg.setThreadHandler([](ClusterGroup<Cell>& cg, Cluster<Cell>& cluster) {
             unsigned long id = cluster.getId();
 
             while(!cg.isTerminated()) {
