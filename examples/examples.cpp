@@ -40,7 +40,14 @@ namespace Smoren::ThreadSafeContainers::Examples {
 
                 cg.log(id, "lock storage 2");
                 unsigned long i=0;
-                for(auto* cell : cluster.getStorage()) {
+
+                //for(auto it = cluster.begin(); it != cluster.end(); it++) {
+                //    if(i++ % 2) {
+                //        cluster.remove(*it);
+                //    }
+                //}
+
+                for(auto* cell : cluster) {
                     if(i++ % 2) {
                         cluster.remove(cell);
                     }
