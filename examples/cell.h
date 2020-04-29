@@ -4,15 +4,15 @@
 #include "../src/clustergroup.h"
 
 namespace Smoren::ThreadSafeContainers::Examples {
-    class Cell {
+    class Cell : public Smoren::ThreadSafeContainers::ClusterItem {
     public:
         Cell();
         Cell(unsigned long id);
         virtual ~Cell();
         virtual unsigned long getClusterId() const;
-        virtual unsigned long getId() const;
         virtual void setClusterId(unsigned long clusterId);
         virtual void removeClusterId();
+        virtual unsigned long getId() const;
 
     protected:
         unsigned long clusterId;

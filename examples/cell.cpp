@@ -1,6 +1,7 @@
 #include <ostream>
 #include "./cell.h"
 
+
 namespace Smoren::ThreadSafeContainers::Examples {
     Cell::Cell() : clusterId(0), id(0) {
 

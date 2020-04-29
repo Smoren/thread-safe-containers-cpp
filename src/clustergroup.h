@@ -11,6 +11,13 @@
 
 
 namespace Smoren::ThreadSafeContainers {
+    class ClusterItem {
+    public:
+        virtual void setClusterId(unsigned long clusterId) = 0;
+        virtual unsigned long getClusterId() const = 0;
+        virtual void removeClusterId() = 0;
+    };
+
     template<typename ClusterItem> class Cluster {
     public:
         class iterator;
