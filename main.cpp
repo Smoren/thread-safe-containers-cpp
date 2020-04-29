@@ -12,8 +12,8 @@ using namespace Smoren::ThreadSafeContainers::Examples;
 int main()
 {
     testClusterGroup();
-//    testClusterMap();
-//    testClusterMapBenchWithStdMap();
+    testClusterMap();
+    testClusterMapBenchWithStdMap();
 
     showTitle("ALL FINISHED!");
 
