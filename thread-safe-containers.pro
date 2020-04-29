@@ -7,5 +7,5 @@ QMAKE_LFLAGS += -pthread
 SOURCES += \
         main.cpp
 
-include(src/src.pri)
+include(src/thread-safe-containers.pri)
 include(examples/examples.pri)
