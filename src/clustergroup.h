@@ -18,7 +18,7 @@ namespace Smoren::ThreadSafeContainers {
         virtual void removeClusterId() = 0;
     };
 
-    template<typename ClusterItem> class Cluster {
+    template<class ClusterItem> class Cluster {
     public:
         class iterator;
         friend class iterator;
